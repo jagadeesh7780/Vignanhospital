@@ -1,7 +1,7 @@
 import React from "react";
-import "./WhyChoose.css";
+import "./Whychoose.css";
 
-const WhyChoose = () => {
+const Whychoose = () => {
   return (
     <div className="why-choose-section">
       <div className="content-wrapper">
@@ -42,4 +42,4 @@ const WhyChoose = () => {
   );
 };
 
-export default WhyChoose;
+export default Whychoose;
