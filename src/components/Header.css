@@ -1,0 +1,181 @@
+:root {
+  --green-main: #2e5d34;
+  --green-dark: #1e4728;
+  --gold: #e2b614;
+  --white: #ffffff;
+  --light-text: #e8f5e9;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family:
+    "Segoe UI",
+    system-ui,
+    -apple-system,
+    sans-serif;
+  background-color: #f9fafb;
+}
+
+header {
+  background: var(--green-main);
+  color: var(--white);
+  padding: 1.1rem;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.22);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.header-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.logo-area {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+}
+
+.logo-icon {
+  font-size: 4.2rem;
+  color: var(--gold);
+}
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.hospital-name {
+  font-size: 2.4rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  line-height: 1;
+}
+
+.tagline {
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--light-text);
+  margin-top: 0.25rem;
+}
+
+/* Hamburger button */
+.hamburger {
+  display: none; /* hidden on desktop */
+  background: none;
+  border: none;
+  font-size: 2.2rem;
+  color: var(--white);
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.hamburger:hover {
+  color: var(--gold);
+}
+
+/* Navigation */
+.nav-links {
+  display: flex;
+  gap: 2.2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--white);
+  text-decoration: none;
+  font-size: 1.08rem;
+  font-weight: 500;
+  transition: color 0.25s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--gold);
+}
+
+/* ──────────────────────────────────────── */
+/* Mobile responsive part                     */
+/* ──────────────────────────────────────── */
+
+@media (max-width: 992px) {
+  .header-container {
+    flex-wrap: wrap;
+    padding: 1rem 15px;
+  }
+
+  .hamburger {
+    display: block; /* show hamburger on mobile */
+  }
+
+  .nav-links {
+    display: none; /* hide normal horizontal nav */
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--green-dark); /* slightly darker for contrast */
+    padding: 1.5rem 0;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    transition: all 0.35s ease;
+    transform: translateY(-10px);
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .nav-links.active {
+    display: flex;
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .nav-links li {
+    text-align: center;
+    padding: 0.9rem 0;
+  }
+
+  .nav-links a {
+    font-size: 1.15rem;
+    display: block;
+    padding: 0.6rem 1.5rem;
+  }
+
+  /* Smaller logo on very small screens */
+  .hospital-name {
+    font-size: 2rem;
+  }
+
+  .logo-icon {
+    font-size: 3.2rem;
+  }
+
+  .tagline {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .hospital-name {
+    font-size: 1.8rem;
+  }
+  .logo-icon {
+    font-size: 2.8rem;
+  }
+  .tagline {
+    font-size: 0.95rem;
+  }
+}
