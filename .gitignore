@@ -75,7 +75,7 @@ dist
 
 # Gatsby files
 .cache/
-public
+# public (commented out for React/Vite projects that need public folder)
 
 # Vite build output
 dist
