@@ -1,3 +1,8 @@
+/* Header.css */
+
+/* ──────────────────────────────────────── */
+/* Root Variables                             */
+/* ──────────────────────────────────────── */
 :root {
   --green-main: #2e5d34;
   --green-dark: #1e4728;
@@ -6,6 +11,9 @@
   --light-text: #e8f5e9;
 }
 
+/* ──────────────────────────────────────── */
+/* Global Reset & Base                        */
+/* ──────────────────────────────────────── */
 * {
   margin: 0;
   padding: 0;
@@ -21,6 +29,9 @@ body {
   background-color: #f9fafb;
 }
 
+/* ──────────────────────────────────────── */
+/* Header                                     */
+/* ──────────────────────────────────────── */
 header {
   background: var(--green-main);
   color: var(--white);
@@ -73,7 +84,7 @@ header {
 
 /* Hamburger button */
 .hamburger {
-  display: none; /* hidden on desktop */
+  display: none;
   background: none;
   border: none;
   font-size: 2.2rem;
@@ -86,7 +97,7 @@ header {
   color: var(--gold);
 }
 
-/* Navigation */
+/* Navigation Links */
 .nav-links {
   display: flex;
   gap: 2.2rem;
@@ -107,9 +118,69 @@ header {
 }
 
 /* ──────────────────────────────────────── */
-/* Mobile responsive part                     */
+/* Dropdown Menu                              */
 /* ──────────────────────────────────────── */
+.dropdown {
+  position: relative;
+}
 
+.dropdown-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  cursor: pointer;
+}
+
+.arrow {
+  font-size: 0.9rem;
+  transition: transform 0.25s ease;
+}
+
+.dropdown:hover .arrow {
+  transform: rotate(180deg);
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: var(--green-dark);
+  list-style: none;
+  min-width: 240px;
+  border-radius: 6px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  padding: 0.8rem 0;
+  margin: 0.5rem 0 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.25s ease;
+  z-index: 999;
+}
+
+.dropdown-menu.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown-menu li a {
+  display: block;
+  padding: 0.75rem 1.5rem;
+  color: var(--white);
+  text-decoration: none;
+  font-size: 1.05rem;
+  transition: background 0.2s;
+}
+
+.dropdown-menu li a:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--gold);
+}
+
+/* ──────────────────────────────────────── */
+/* Mobile Responsive                          */
+/* ──────────────────────────────────────── */
 @media (max-width: 992px) {
   .header-container {
     flex-wrap: wrap;
@@ -117,17 +188,17 @@ header {
   }
 
   .hamburger {
-    display: block; /* show hamburger on mobile */
+    display: block;
   }
 
   .nav-links {
-    display: none; /* hide normal horizontal nav */
+    display: none;
     flex-direction: column;
     position: absolute;
     top: 100%;
     left: 0;
     right: 0;
-    background: var(--green-dark); /* slightly darker for contrast */
+    background: var(--green-dark);
     padding: 1.5rem 0;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
     transition: all 0.35s ease;
@@ -154,17 +225,28 @@ header {
     padding: 0.6rem 1.5rem;
   }
 
-  /* Smaller logo on very small screens */
-  .hospital-name {
-    font-size: 2rem;
+  /* Dropdown in mobile menu */
+  .dropdown-menu {
+    position: static;
+    box-shadow: none;
+    background: var(--green-main);
+    padding-left: 1.5rem;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
   }
 
-  .logo-icon {
-    font-size: 3.2rem;
+  .dropdown-menu.show {
+    max-height: 800px; /* enough for all items */
   }
 
-  .tagline {
-    font-size: 1rem;
+  .dropdown-toggle {
+    justify-content: space-between;
+    padding: 0.9rem 1.5rem;
+  }
+
+  .arrow {
+    transition: transform 0.3s;
   }
 }
 
